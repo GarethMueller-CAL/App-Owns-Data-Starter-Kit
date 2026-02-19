@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using AppOwnsDataWebApi.Models;
 using AppOwnsDataWebApi.Services;
+using Microsoft.Build.Framework;
+using Microsoft.Extensions.Logging;
+using System;
 
 namespace AppOwnsDataWebApi.Controllers {
 
@@ -13,18 +16,22 @@ namespace AppOwnsDataWebApi.Controllers {
   [Authorize]
   [RequiredScope("Reports.Embed")]
   [EnableCors("AllowOrigin")]
-  public class EmbedController : ControllerBase {
+  public class EmbedController(PowerBiServiceApi powerBiServiceApi, ILogger<EmbedController> logger) : ControllerBase {
 
-    private PowerBiServiceApi powerBiServiceApi;
+    private PowerBiServiceApi powerBiServiceApi = powerBiServiceApi;
 
-    public EmbedController(PowerBiServiceApi powerBiServiceApi) {
-      this.powerBiServiceApi = powerBiServiceApi;
-    }
-
-    [HttpGet]
+        [HttpGet]
     public async Task<EmbeddedViewModel> Get() {
-      string user = this.User.FindFirst("preferred_username").Value;
+      try
+      {
+        string user = this.User.Identity?.Name;
       return await this.powerBiServiceApi.GetEmbeddedViewModel(user);
+      }
+      catch (Exception e)
+      {
+        logger.LogError(e, "Some error");
+        throw;
+      }
     }
 
   }

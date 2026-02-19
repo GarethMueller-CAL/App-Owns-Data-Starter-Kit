@@ -23,7 +23,7 @@ namespace AppOwnsDataWebApi.Controllers {
 
     [HttpGet]
     public async Task<EmbedTokenResult> Get() {
-      string user = this.User.FindFirst("preferred_username").Value;
+      string user = this.User.Identity?.Name;
       return await this.powerBiServiceApi.GetEmbedToken(user);
     }
 

@@ -29,7 +29,7 @@ namespace AppOwnsDataWebApi.Controllers {
     [HttpPost]
     public async Task<FileStreamResult> PostExportFile([FromBody] ExportFileRequestParams exportRequest) {
 
-      string user = this.User.FindFirst("preferred_username").Value;
+      string user = this.User.Identity?.Name;
 
       var exportedReport = await this.powerBiServiceApi.ExportFile(user, exportRequest);
       exportedReport.ReportStream.Flush();

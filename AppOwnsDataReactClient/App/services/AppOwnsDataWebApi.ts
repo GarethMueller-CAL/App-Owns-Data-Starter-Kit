@@ -6,8 +6,8 @@ import { ViewModel, EmbedTokenResult, ActivityLogEntry, User, ExportFileRequest 
 
 export default class AppOwnsDataWebApi {
 
-  //public static ApiRoot: string = "https://localhost:44302/api/";
-  public static ApiRoot: string = "https://appownsdatawebapi.azurewebsites.net/api/";
+  //public static ApiRoot: string = "https://appownsdatawebapi.azurewebsites.net/api/";
+  public static ApiRoot: string = "https://localhost:44302/api/";
 
   private static GetAccessToken = async (): Promise<string> => {
 

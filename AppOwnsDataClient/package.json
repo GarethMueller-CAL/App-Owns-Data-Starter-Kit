@@ -21,7 +21,7 @@
     "html-webpack-plugin": "^5.5.0",
     "jquery": "^3.5.1",
     "powerbi-client": "^2.18.7",
-    "powerbi-models": "^1.9.7",
+    "powerbi-models": "1.12.6",
     "powerbi-report-authoring": "^1.1.3",
     "style-loader": "^1.0.1",
     "ts-loader": "^9.2.8",

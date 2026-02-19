@@ -1,0 +1,35 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## NuGet
+*.nupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+
+## Visual Studio
+.vs/
+*.rsuser
+*.userprefs
+launchSettings.json
+
+## Node.js
+node_modules/
+npm-debug.log*
+
+## Webpack build output
+**/wwwroot/js/bundle.js
+**/wwwroot/js/bundle.js.map
+
+## OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+## Secrets
+**/appsettings.Development.json
